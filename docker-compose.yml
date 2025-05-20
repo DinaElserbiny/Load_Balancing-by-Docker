@@ -1,0 +1,18 @@
+services:
+  worker1:
+    build: ./worker1
+    container_name: worker1
+  worker2:
+    build: ./worker2
+    container_name: worker2
+  worker3:
+    build: ./worker3
+    container_name: worker3
+  load_balancer:
+    build: ./load_balancer
+    ports:
+      - "8090:8090"
+    depends_on:
+      - worker1
+      - worker2
+      - worker3
